@@ -3,12 +3,14 @@
 set -x
 set -eo pipefail
 
-if ![ -x "$(command -v psql)" ] then
+if ![ -x "$(command -v psql)" ]
+then
     echo >&2 "ERROR: psql is not installed"
     exit 1
 fi
 
-if ![ -x "$(command -v sqlx)" ] then
+if ![ -x "$(command -v sqlx)" ]
+then
     echo >&2 "ERROR: sqlx is not installed"
     exit 1
 fi
@@ -19,7 +21,8 @@ DB_NAME="${POSTGRES_NAME:=newsletter}"
 DB_PORT="${POSTGRES_PORT:=5432}"
 DB_HOST="${POSTGRES_HOST:=localhost}"
 
-if [[ -z "${SKIP_DOCKER}" ]] then
+if [[ -z "${SKIP_DOCKER}" ]]
+then
     sudo docker run \
         -e POSTGRES_USER=${DB_USER} \
         -e POSTGRES_PASSWORD=${DB_PASSWORD} \
